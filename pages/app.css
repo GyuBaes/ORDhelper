@@ -1,0 +1,25 @@
+@tailwind base;
+@font-face {
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #d4d4d4;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-use-select: none;
+  user-select: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #18181b;
+  }
+}
