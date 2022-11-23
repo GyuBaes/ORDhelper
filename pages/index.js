@@ -638,6 +638,39 @@ const Home = () => {
                 />
               );
             })}
+          <div className="flex pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
+            <span className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base">
+              랜덤제한됨
+            </span>
+            <button
+              className="text-[0.7rem]"
+              onClick={() => {
+                resetQty('randomltd');
+              }}
+            >
+              초기화
+            </button>
+          </div>
+          {unitLst
+            .filter((unit) => unit?.rating === 'randomltd')
+            .map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  cautionAura={cautionAura}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                />
+              );
+            })}
         </section>
       </main>
     </div>

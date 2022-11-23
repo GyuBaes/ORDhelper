@@ -50,12 +50,34 @@ const Unit = ({
     setUnitLst(newUnitLst);
   };
 
-  const addQty = () => {
-    const temp = { qty: Number(unit.qty + 1) };
-    const newUnitLst = unitLst.map((u) =>
-      u.urn === unit.urn ? { ...u, ...temp } : u,
-    );
-    setUnitLst(newUnitLst);
+  const addQty = (e) => {
+    console.log(e.shiftKey, e.altKey);
+    if (e.shiftKey === false && e.altKey === false) {
+      const temp = { qty: Number(unit.qty + 1) };
+      const newUnitLst = unitLst.map((u) =>
+        u.urn === unit.urn ? { ...u, ...temp } : u,
+      );
+      setUnitLst(newUnitLst);
+      return;
+    }
+    if (e.shiftKey === true) {
+      const temp = { qty: unit.qty === 0 ? 0 : Number(unit.qty - 1) };
+      const newUnitLst = unitLst.map((u) =>
+        u.urn === unit.urn ? { ...u, ...temp } : u,
+      );
+      setUnitLst(newUnitLst);
+      return;
+    }
+    if (
+      (e.altKey && unit.rating === 'limited') ||
+      unit.rating === 'eternity' ||
+      unit.rating === 'immortal' ||
+      unit.rating === 'transcendence'
+    ) {
+      const newUnitLst = unitLst.filter((u) => u.name !== unit.name);
+      setUnitLst(newUnitLst);
+      return;
+    }
   };
 
   const qtyInput = useRef();
@@ -80,6 +102,7 @@ const Unit = ({
   const combination = getCombination(unitLst[nowIndex]);
   const lessUnitList = getLessUnit2(unitLst, unitLst[nowIndex]);
   const percent = getPercent3(unitLst, unitLst[nowIndex]);
+
   let dpPercent = '';
   dpPercent = percent.toString();
   if (percent % 1 !== 0) {
