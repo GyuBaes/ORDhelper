@@ -5282,7 +5282,7 @@ export const combinationList = [
     material: [
       { name: '죠즈희귀함', qty: 1, urn: 'jozurare', dpname: '죠즈-희귀함' },
       { name: '마르코특별함', qty: 1, urn: 'marcouq', dpname: '마르코-특별함' },
-      { name: '에이스안흔함', qty: 1, urn: 'aceuq', dpname: '에이스-특별함' },
+      { name: '에이스안흔함', qty: 1, urn: 'aceuq', dpname: '에이스-안흔함' },
     ],
     lowestMaterial: [
       { name: '루피', qty: 3, urn: 'luffy', dpname: '루피-흔함' },
