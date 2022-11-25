@@ -31,7 +31,6 @@ const Unit = ({
   dpBoss,
   commonExceptPercent,
 }) => {
-  console.log('render');
   const getindex = () => {
     let index = 0;
     unitLst.forEach((u, i) => {
