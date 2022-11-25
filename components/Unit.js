@@ -53,20 +53,32 @@ const Unit = ({
   };
 
   const addQty = (e) => {
+    // if (e.shiftKey === false && e.altKey === false) {
+    //   const temp = { qty: Number(unit.qty + 1) };
+    //   const newUnitLst = unitLst.map((u) =>
+    //     u.urn === unit.urn ? { ...u, ...temp } : u,
+    //   );
+    //   setUnitLst(newUnitLst);
+    //   return;
+    // }
     if (e.shiftKey === false && e.altKey === false) {
-      const temp = { qty: Number(unit.qty + 1) };
-      const newUnitLst = unitLst.map((u) =>
-        u.urn === unit.urn ? { ...u, ...temp } : u,
-      );
-      setUnitLst(newUnitLst);
+      unitLst[nowIndex].qty += 1;
+      setUnitLst([...unitLst]);
       return;
     }
+    // if (e.shiftKey === true) {
+    //   const temp = { qty: unit.qty === 0 ? 0 : Number(unit.qty - 1) };
+    //   const newUnitLst = unitLst.map((u) =>
+    //     u.urn === unit.urn ? { ...u, ...temp } : u,
+    //   );
+    //   setUnitLst(newUnitLst);
+    //   return;
+    // }
     if (e.shiftKey === true) {
-      const temp = { qty: unit.qty === 0 ? 0 : Number(unit.qty - 1) };
-      const newUnitLst = unitLst.map((u) =>
-        u.urn === unit.urn ? { ...u, ...temp } : u,
-      );
-      setUnitLst(newUnitLst);
+      unitLst[nowIndex].qty > 0
+        ? (unitLst[nowIndex].qty -= 1)
+        : (unitLst[nowIndex].qty = 0);
+      setUnitLst([...unitLst]);
       return;
     }
     if (

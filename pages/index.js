@@ -21,6 +21,21 @@ const Home = () => {
   const [onOffDefense, setOnOffDefense] = useState(0);
   const [single, setSingle] = useState(0);
 
+  const common = unitLst.filter((unit) => unit?.rating === 'common');
+  const uncommon = unitLst.filter((unit) => unit?.rating === 'uncommon');
+  const unique = unitLst.filter((unit) => unit?.rating === 'unique');
+  const rare = unitLst.filter((unit) => unit?.rating === 'rare');
+  const legendary = unitLst.filter((unit) => unit?.rating === 'legendary');
+  const hidden = unitLst.filter((unit) => unit?.rating === 'hidden');
+  const changed = unitLst.filter((unit) => unit?.rating === 'changed');
+  const transcendence = unitLst.filter(
+    (unit) => unit?.rating === 'transcendence',
+  );
+  const immortal = unitLst.filter((unit) => unit?.rating === 'immortal');
+  const eternity = unitLst.filter((unit) => unit?.rating === 'eternity');
+  const limited = unitLst.filter((unit) => unit?.rating === 'limited');
+  const randomltd = unitLst.filter((unit) => unit?.rating === 'randomltd');
+
   useEffect(() => {
     if (unitLst !== undefined) {
       const stunTemp = unitLst.reduce((acc, cur) => {
@@ -168,21 +183,19 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'common')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {common.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
           <div className="flex relative pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px]  h-[14px] justify-between px-[0.1rem]">
             <span className="text-xs font-medium pc:text-base">안흔함</span>
             <button
@@ -318,21 +331,19 @@ const Home = () => {
               </div>
             </section>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'uncommon')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {uncommon.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex-[0.8] mr-2">
           <div className="flex h-[14px] pc:h-[23px] mb-[2px]  justify-between px-[0.1rem]">
@@ -346,26 +357,24 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'unique')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {unique.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex-[0.8] mr-2">
           <div className="flex h-[14px] pc:h-[23px]  mb-[2px] justify-between px-[0.1rem]">
@@ -379,26 +388,24 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'rare')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {rare.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex-1 mr-2">
           <div className="flex h-[14px] pc:h-[23px] mb-[2px]   justify-between px-[0.1rem]">
@@ -414,27 +421,25 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'legendary')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {legendary.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex flex-col flex-1 mr-2">
           <div className="flex  pc:h-[23px] mb-[2px]  h-[14px] justify-between px-[0.1rem]">
@@ -450,27 +455,25 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'hidden')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {hidden.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
           <div className="flex  relative pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
             <span className="text-xs text-[#C8007A] font-medium pc:text-base">
               변화됨
@@ -495,25 +498,23 @@ const Home = () => {
               <span className="">{single} 단일</span>
             </section>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'changed')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {changed.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex-1 mr-2">
           <div className="flex relative pc:h-[23px] mb-[2px] h-[14px] justify-between px-[0.1rem]">
@@ -545,27 +546,25 @@ const Home = () => {
               </div>
             </div>
           </section>
-          {unitLst
-            .filter((unit) => unit?.rating === 'transcendence')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {transcendence.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
         <section className="flex flex-col flex-1">
           <div className="flex  justify-between pc:h-[23px] mb-[2px] h-[14px] px-[0.1rem]">
@@ -581,26 +580,24 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'immortal')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {immortal.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
           <div className="flex h-[14px] pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] justify-between px-[0.1rem]">
             <span className="text-xs text-[#C05DEB] font-medium pc:text-base">
               영원함
@@ -614,26 +611,24 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'eternity')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {eternity.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
           <div className="flex pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
             <span className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base">
               제한됨
@@ -647,27 +642,25 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'limited')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {limited.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
           <div className="flex pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
             <span className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base">
               랜덤제한됨
@@ -681,27 +674,25 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {unitLst
-            .filter((unit) => unit?.rating === 'randomltd')
-            .map((unit) => {
-              return (
-                <Unit
-                  unit={unit}
-                  key={unit.urn}
-                  setUnitLst={setUnitLst}
-                  unitLst={unitLst}
-                  description={description}
-                  attack={attack}
-                  burgess={burgess}
-                  cautionAura={cautionAura}
-                  dpStun={dpStun}
-                  dpBoss={dpBoss}
-                  dpDefense={dpDefense}
-                  dpSpeed={dpSpeed}
-                  commonExceptPercent={commonExceptPercent}
-                />
-              );
-            })}
+          {randomltd.map((unit) => {
+            return (
+              <Unit
+                unit={unit}
+                key={unit.urn}
+                setUnitLst={setUnitLst}
+                unitLst={unitLst}
+                description={description}
+                attack={attack}
+                burgess={burgess}
+                cautionAura={cautionAura}
+                dpStun={dpStun}
+                dpBoss={dpBoss}
+                dpDefense={dpDefense}
+                dpSpeed={dpSpeed}
+                commonExceptPercent={commonExceptPercent}
+              />
+            );
+          })}
         </section>
       </main>
     </div>
