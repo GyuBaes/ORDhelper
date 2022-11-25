@@ -5,6 +5,7 @@ import CombinationUnit from './CombinationUnit';
 
 import {
   getCombination,
+  getPercent2,
   getPercent3,
   getLessUnit2,
   setCombination,
@@ -28,6 +29,7 @@ const Unit = ({
   dpSpeed,
   dpDefense,
   dpBoss,
+  commonExceptPercent,
 }) => {
   const getindex = () => {
     let index = 0;
@@ -51,7 +53,6 @@ const Unit = ({
   };
 
   const addQty = (e) => {
-    console.log(e.shiftKey, e.altKey);
     if (e.shiftKey === false && e.altKey === false) {
       const temp = { qty: Number(unit.qty + 1) };
       const newUnitLst = unitLst.map((u) =>
@@ -102,14 +103,23 @@ const Unit = ({
   const combination = getCombination(unitLst[nowIndex]);
   const lessUnitList = getLessUnit2(unitLst, unitLst[nowIndex]);
   const percent = getPercent3(unitLst, unitLst[nowIndex]);
+  const exceptCommonPercent = getPercent2(unitLst, unitLst[nowIndex]);
 
   let dpPercent = '';
-  dpPercent = percent.toString();
-  if (percent % 1 !== 0) {
-    dpPercent = percent.toString().split('.')[0];
+  if (!commonExceptPercent) {
+    dpPercent = percent.toString();
+    if (percent % 1 !== 0) {
+      dpPercent = percent.toString().split('.')[0];
+    }
   }
-  const progessPercent = percent >= 100 ? 100 : dpPercent.substring(0, 2);
+  if (commonExceptPercent) {
+    dpPercent = exceptCommonPercent.toString();
+    if (percent % 1 !== 0) {
+      dpPercent = exceptCommonPercent.toString().split('.')[0];
+    }
+  }
 
+  const progressPercent = dpPercent >= 100 ? 100 : dpPercent.substring(0, 2);
   return (
     <div className="flex items-center mb-[1px]  pc:mb-[2px] ">
       <div className="relative flex h-[21px] w-[24.5px] pc:h-[28px] pc:w-[33px] items-center group ">
@@ -134,11 +144,11 @@ const Unit = ({
         >
           <div
             className={
-              progessPercent === 100
+              progressPercent === 100
                 ? 'absolute top-0 left-0  w-full h-full flex items-center bg-yellow-200 dark:bg-yellow-800 opacity-100'
                 : 'absolute top-0 left-0  w-full h-full flex items-center bg-sky-200 dark:bg-sky-800  opacity-100'
             }
-            style={{ width: progessPercent + '%' }}
+            style={{ width: progressPercent + '%' }}
           >
             <span className="pl-[0.15rem] text-[0.5rem]">
               {dpPercent === '0' || unit.name === '위습'

@@ -264,6 +264,61 @@ export const getPercent3 = (curr, combi) => {
 
   return percent;
 };
+export const getPercent2 = (curr, combi) => {
+  const copyCurr = _.cloneDeep(curr);
+  const allQty = getSumCombinationQty(getLowestCombination(combi));
+  let combiList = getCombination(combi);
+  let lessList = [];
+  let memo = {};
+  let allLessList = [];
+  let haveValue = 0;
+  let percent = 0;
+  let isTrueOrFalse = false;
+
+  for (let i = 0; i <= 9; i++) {
+    copyCurr[i].qty = 0;
+  }
+
+  while (combiList !== undefined) {
+    for (let currUnit of copyCurr) {
+      for (let combiUnit of combiList) {
+        if (currUnit.name === combiUnit.name) {
+          if (currUnit.qty === 0) {
+            lessList.push(combiUnit);
+          }
+          if (currUnit.qty !== 0 && currUnit.qty < combiUnit.qty) {
+            memo = { ...combiUnit };
+            memo.qty -= currUnit.qty;
+            currUnit.qty -= currUnit.qty;
+            lessList.push(memo);
+          }
+          if (currUnit.qty !== 0 && currUnit.qty >= combiUnit.qty) {
+            currUnit.qty -= combiUnit.qty;
+          }
+        }
+      }
+    }
+
+    combiList = getArrayCombination(lessList);
+    allLessList = [...allLessList, ...lessList];
+
+    lessList = [];
+    memo = {};
+  }
+
+  allLessList = appendQty(groupBy(allLessList, 'name'));
+
+  for (let unit of allLessList) {
+    if (unit.name === '위습') {
+      haveValue += allQty - unit.qty;
+      isTrueOrFalse = true;
+    }
+  }
+  if (!isTrueOrFalse) haveValue = +allQty;
+  percent = (haveValue / allQty) * 100;
+
+  return percent;
+};
 
 export const getLessUnit2 = (curr, combi) => {
   const copyCurr = _.cloneDeep(curr);

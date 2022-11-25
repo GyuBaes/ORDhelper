@@ -13,6 +13,7 @@ const Home = () => {
   const [burgess, setBurgess] = useState(false);
   const [cautionAura, setCautionAura] = useState(false);
   const [helpCenter, setHelpCenter] = useState(false);
+  const [commonExceptPercent, setCommonExceptPercent] = useState(false);
   const [stun, setStun] = useState(0);
   const [speed, setSpeed] = useState(0);
   const [onOffSpeed, setOnOffSpeed] = useState(0);
@@ -131,6 +132,12 @@ const Home = () => {
     if (text === 'dpStun' && !dpStun) {
       setDpStun(true);
     }
+    if (text === 'commonExceptPercent' && commonExceptPercent) {
+      setCommonExceptPercent(false);
+    }
+    if (text === 'commonExceptPercent' && !commonExceptPercent) {
+      setCommonExceptPercent(true);
+    }
   };
 
   const resetQty = (rating) => {
@@ -172,6 +179,7 @@ const Home = () => {
                   unitLst={unitLst}
                   description={description}
                   attack={attack}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -185,7 +193,7 @@ const Home = () => {
             >
               초기화
             </button>
-            <section className="absolute z-10 flex flex-col justify-center bottom-[-545px] pc:bottom-[-645px]  ">
+            <section className="absolute z-10 flex flex-col justify-center bottom-[-570px] pc:bottom-[-675px]  ">
               <div>
                 <label className="relative flex items-center mb-1 mr-5 cursor-pointer ">
                   <input
@@ -250,6 +258,18 @@ const Home = () => {
                 <label className="relative flex items-center mb-1 mr-5 cursor-pointer ">
                   <input
                     onClick={() => {
+                      handleDisplay('commonExceptPercent');
+                    }}
+                    type="checkbox"
+                    className="sr-only peer"
+                    readOnly
+                  />
+                  <div className="w-9 h-5 bg-gray-200 rounded-full peer top-0 left-0   peer-focus:ring-blue-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yellow-500"></div>
+                  <span className="ml-1 text-sm ">흔함제외퍼센트</span>
+                </label>
+                <label className="relative flex items-center mb-1 mr-5 cursor-pointer ">
+                  <input
+                    onClick={() => {
                       handleDisplay('description');
                     }}
                     type="checkbox"
@@ -309,6 +329,7 @@ const Home = () => {
                   unitLst={unitLst}
                   description={description}
                   attack={attack}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -341,6 +362,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -373,6 +395,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -408,6 +431,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -443,6 +467,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -485,6 +510,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -536,6 +562,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -570,6 +597,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -602,6 +630,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -635,6 +664,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
@@ -668,6 +698,7 @@ const Home = () => {
                   dpBoss={dpBoss}
                   dpDefense={dpDefense}
                   dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
                 />
               );
             })}
