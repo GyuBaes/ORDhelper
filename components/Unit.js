@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import Image from 'next/image';
 import LessUnit from './LessUnit';
 import CombinationUnit from './CombinationUnit';
@@ -31,6 +31,7 @@ const Unit = ({
   dpBoss,
   commonExceptPercent,
 }) => {
+  console.log('render');
   const getindex = () => {
     let index = 0;
     unitLst.forEach((u, i) => {
@@ -255,4 +256,4 @@ const Unit = ({
   );
 };
 
-export default Unit;
+export default memo(Unit);

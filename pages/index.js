@@ -156,16 +156,10 @@ const Home = () => {
   };
 
   const resetQty = (rating) => {
-    if (rating !== 'all') {
-      const newUnitLst = unitLst.map((u) =>
-        u.rating === rating ? { ...u, ...{ qty: 0 } } : u,
-      );
-      setUnitLst(newUnitLst);
-    }
-    if (rating === 'all') {
-      const newUnitLst = unitLst.map((u) => (u = { ...u, ...{ qty: 0 } }));
-      setUnitLst(newUnitLst);
-    }
+    const newUnitLst = unitLst.map((u) =>
+      u.rating === rating ? { ...u, ...{ qty: 0 } } : u,
+    );
+    setUnitLst(newUnitLst);
   };
 
   return (
@@ -190,8 +184,6 @@ const Home = () => {
                 key={unit.urn}
                 setUnitLst={setUnitLst}
                 unitLst={unitLst}
-                description={description}
-                attack={attack}
                 commonExceptPercent={commonExceptPercent}
               />
             );
@@ -338,8 +330,6 @@ const Home = () => {
                 key={unit.urn}
                 setUnitLst={setUnitLst}
                 unitLst={unitLst}
-                description={description}
-                attack={attack}
                 commonExceptPercent={commonExceptPercent}
               />
             );
@@ -365,10 +355,7 @@ const Home = () => {
                 setUnitLst={setUnitLst}
                 unitLst={unitLst}
                 description={description}
-                attack={attack}
                 cautionAura={cautionAura}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
                 dpDefense={dpDefense}
                 dpSpeed={dpSpeed}
                 commonExceptPercent={commonExceptPercent}
@@ -396,10 +383,8 @@ const Home = () => {
                 setUnitLst={setUnitLst}
                 unitLst={unitLst}
                 description={description}
-                attack={attack}
                 cautionAura={cautionAura}
                 dpStun={dpStun}
-                dpBoss={dpBoss}
                 dpDefense={dpDefense}
                 dpSpeed={dpSpeed}
                 commonExceptPercent={commonExceptPercent}
@@ -684,7 +669,6 @@ const Home = () => {
                 description={description}
                 attack={attack}
                 burgess={burgess}
-                cautionAura={cautionAura}
                 dpStun={dpStun}
                 dpBoss={dpBoss}
                 dpDefense={dpDefense}
