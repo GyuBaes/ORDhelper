@@ -2,7 +2,6 @@ import React, { useRef, memo } from 'react';
 import Image from 'next/image';
 import LessUnit from './LessUnit';
 import CombinationUnit from './CombinationUnit';
-
 import {
   getCombination,
   getPercent2,
@@ -44,12 +43,15 @@ const Unit = ({
 
   const handleQty = (e) => {
     const ckeckNum = /^[0-9]+$/;
-    if (!ckeckNum.test(e.target.value)) e.target.value = unit.qty;
-    const temp = { qty: +e.target.value };
-    const newUnitLst = unitLst.map((u) =>
-      u.urn === unit.urn ? { ...u, ...temp } : u,
-    );
-    setUnitLst(newUnitLst);
+    if (!ckeckNum.test(e.target.value)) return;
+    unitLst[nowIndex].qty = e.target.value;
+    setUnitLst([...unitLst]);
+
+    // const temp = { qty: +e.target.value };
+    // const newUnitLst = unitLst.map((u) =>
+    //   u.urn === unit.urn ? { ...u, ...temp } : u,
+    // );
+    // setUnitLst(newUnitLst);
   };
 
   const addQty = (e) => {
@@ -85,7 +87,8 @@ const Unit = ({
       (e.altKey && unit.rating === 'limited') ||
       unit.rating === 'eternity' ||
       unit.rating === 'immortal' ||
-      unit.rating === 'transcendence'
+      unit.rating === 'transcendence' ||
+      unit.rating === 'randomltd'
     ) {
       const newUnitLst = unitLst.filter((u) => u.name !== unit.name);
       setUnitLst(newUnitLst);
@@ -105,10 +108,8 @@ const Unit = ({
   const handleSetCombi = (e) => {
     e.preventDefault();
     if (percent >= 100) {
-      const newUnitLst = setCombination(unitLst, unitLst[nowIndex]).map(
-        (u) => u,
-      );
-      setUnitLst(newUnitLst);
+      const newUnitLst = setCombination(unitLst, unitLst[nowIndex]);
+      setUnitLst(...[newUnitLst]);
     }
   };
   // console.log(getLessUnit2(unitLst, unitLst[nowIndex]));
@@ -247,9 +248,7 @@ const Unit = ({
         onChange={handleQty}
         ref={qtyInput}
         onClick={focus}
-        onContextMenu={() => {
-          inputRightClick(e);
-        }}
+        onContextMenu={inputRightClick}
       />
     </div>
   );

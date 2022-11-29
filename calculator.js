@@ -210,7 +210,9 @@ export const setCombination = (curr, combi) => {
     memo = {};
   }
   combi.qty += 1;
-  return curr;
+
+  const copyCurr = _.cloneDeep(curr);
+  return copyCurr;
 };
 
 export const getPercent3 = (curr, combi) => {

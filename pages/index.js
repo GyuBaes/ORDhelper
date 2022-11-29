@@ -20,6 +20,11 @@ const Home = () => {
   const [defense, setDefense] = useState(0);
   const [onOffDefense, setOnOffDefense] = useState(0);
   const [single, setSingle] = useState(0);
+  const [tr, setTr] = useState(true);
+  const [im, setIm] = useState(true);
+  const [et, setEt] = useState(true);
+  const [ltd, setLtd] = useState(true);
+  const [rltd, setRltd] = useState(true);
 
   const common = unitLst.filter((unit) => unit?.rating === 'common');
   const uncommon = unitLst.filter((unit) => unit?.rating === 'uncommon');
@@ -37,7 +42,7 @@ const Home = () => {
   const randomltd = unitLst.filter((unit) => unit?.rating === 'randomltd');
 
   useEffect(() => {
-    if (unitLst !== undefined) {
+    if (unitLst) {
       const stunTemp = unitLst.reduce((acc, cur) => {
         if (cur?.qty && typeof cur.stun === 'number') acc += cur.qty * cur.stun;
         return acc;
@@ -503,7 +508,12 @@ const Home = () => {
         </section>
         <section className="flex-1 mr-2">
           <div className="flex relative pc:h-[23px] mb-[2px] h-[14px] justify-between px-[0.1rem]">
-            <span className="text-xs dark:text-[#1FF4A7] text-green-600 font-medium pc:text-base">
+            <span
+              className="text-xs dark:text-[#1FF4A7] text-green-600 font-medium pc:text-base"
+              onClick={() => {
+                setTr(!tr);
+              }}
+            >
               초월함
             </span>
             <button
@@ -531,29 +541,35 @@ const Home = () => {
               </div>
             </div>
           </section>
-          {transcendence.map((unit) => {
-            return (
-              <Unit
-                unit={unit}
-                key={unit.urn}
-                setUnitLst={setUnitLst}
-                unitLst={unitLst}
-                description={description}
-                attack={attack}
-                burgess={burgess}
-                cautionAura={cautionAura}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
-                dpDefense={dpDefense}
-                dpSpeed={dpSpeed}
-                commonExceptPercent={commonExceptPercent}
-              />
-            );
-          })}
+          {tr &&
+            transcendence.map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  cautionAura={cautionAura}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
+                />
+              );
+            })}
         </section>
         <section className="flex flex-col flex-1">
           <div className="flex  justify-between pc:h-[23px] mb-[2px] h-[14px] px-[0.1rem]">
-            <span className="text-xs text-[#B84244] font-medium pc:text-base">
+            <span
+              className="text-xs text-[#B84244] font-medium pc:text-base"
+              onClick={() => {
+                setIm(!im);
+              }}
+            >
               불멸의
             </span>
             <button
@@ -565,26 +581,32 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {immortal.map((unit) => {
-            return (
-              <Unit
-                unit={unit}
-                key={unit.urn}
-                setUnitLst={setUnitLst}
-                unitLst={unitLst}
-                description={description}
-                attack={attack}
-                burgess={burgess}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
-                dpDefense={dpDefense}
-                dpSpeed={dpSpeed}
-                commonExceptPercent={commonExceptPercent}
-              />
-            );
-          })}
+          {im &&
+            immortal.map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
+                />
+              );
+            })}
           <div className="flex h-[14px] pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] justify-between px-[0.1rem]">
-            <span className="text-xs text-[#C05DEB] font-medium pc:text-base">
+            <span
+              className="text-xs text-[#C05DEB] font-medium pc:text-base"
+              onClick={() => {
+                setEt(!et);
+              }}
+            >
               영원함
             </span>
             <button
@@ -596,26 +618,32 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {eternity.map((unit) => {
-            return (
-              <Unit
-                unit={unit}
-                key={unit.urn}
-                setUnitLst={setUnitLst}
-                unitLst={unitLst}
-                description={description}
-                attack={attack}
-                burgess={burgess}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
-                dpDefense={dpDefense}
-                dpSpeed={dpSpeed}
-                commonExceptPercent={commonExceptPercent}
-              />
-            );
-          })}
+          {et &&
+            eternity.map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
+                />
+              );
+            })}
           <div className="flex pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
-            <span className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base">
+            <span
+              className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base"
+              onClick={() => {
+                setLtd(!ltd);
+              }}
+            >
               제한됨
             </span>
             <button
@@ -627,27 +655,33 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {limited.map((unit) => {
-            return (
-              <Unit
-                unit={unit}
-                key={unit.urn}
-                setUnitLst={setUnitLst}
-                unitLst={unitLst}
-                description={description}
-                attack={attack}
-                burgess={burgess}
-                cautionAura={cautionAura}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
-                dpDefense={dpDefense}
-                dpSpeed={dpSpeed}
-                commonExceptPercent={commonExceptPercent}
-              />
-            );
-          })}
+          {ltd &&
+            limited.map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  cautionAura={cautionAura}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
+                />
+              );
+            })}
           <div className="flex pc:h-[23px] mb-[2px] mt-[6px] pc:mt-[5px] h-[14px] justify-between px-[0.1rem]">
-            <span className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base">
+            <span
+              className="text-xs dark:text-[#FFE300] text-yellow-600  font-medium pc:text-base"
+              onClick={() => {
+                setRltd(!rltd);
+              }}
+            >
               랜덤제한됨
             </span>
             <button
@@ -659,24 +693,25 @@ const Home = () => {
               초기화
             </button>
           </div>
-          {randomltd.map((unit) => {
-            return (
-              <Unit
-                unit={unit}
-                key={unit.urn}
-                setUnitLst={setUnitLst}
-                unitLst={unitLst}
-                description={description}
-                attack={attack}
-                burgess={burgess}
-                dpStun={dpStun}
-                dpBoss={dpBoss}
-                dpDefense={dpDefense}
-                dpSpeed={dpSpeed}
-                commonExceptPercent={commonExceptPercent}
-              />
-            );
-          })}
+          {rltd &&
+            randomltd.map((unit) => {
+              return (
+                <Unit
+                  unit={unit}
+                  key={unit.urn}
+                  setUnitLst={setUnitLst}
+                  unitLst={unitLst}
+                  description={description}
+                  attack={attack}
+                  burgess={burgess}
+                  dpStun={dpStun}
+                  dpBoss={dpBoss}
+                  dpDefense={dpDefense}
+                  dpSpeed={dpSpeed}
+                  commonExceptPercent={commonExceptPercent}
+                />
+              );
+            })}
         </section>
       </main>
     </div>
