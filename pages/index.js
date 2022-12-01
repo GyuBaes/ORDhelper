@@ -90,7 +90,7 @@ const Home = () => {
       setSingle(
         unitLst.reduce((acc, cur) => {
           if (cur?.qty && typeof cur?.single === 'number')
-            acc = cur.qty * cur?.single;
+            acc += cur.qty * cur?.single;
           return acc;
         }, 0),
       );
