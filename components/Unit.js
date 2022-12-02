@@ -44,7 +44,7 @@ const Unit = ({
   const handleQty = (e) => {
     const ckeckNum = /^[0-9]+$/;
     if (!ckeckNum.test(e.target.value)) return;
-    unitLst[nowIndex].qty = e.target.value;
+    unitLst[nowIndex].qty = +e.target.value;
     setUnitLst([...unitLst]);
 
     // const temp = { qty: +e.target.value };
